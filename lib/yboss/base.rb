@@ -1,10 +1,31 @@
 module YBoss
-  module Base
+  class Base
     require 'yboss/oauth'
     require 'yboss/config'
+    require 'yboss/result/base'
     require 'rest-client'
     require 'json'
     require 'uri'
+
+    attr_reader :credits, :options
+
+    def initialize(options = { })
+      @options = {
+        'format' => 'json',
+      }.merge(options)
+
+      if YBoss.config.proxy
+        RestClient.proxy = YBoss.config.proxy
+      end
+    end
+
+    def call(options = {})
+      data = fetch(@options.merge(options))
+
+      clazz = YBoss.class_from_string(self.class.to_s + '::Result')
+      clazz.new(data)
+    end
+
 
     def fetch(options = {})
       @options.merge!(options)
