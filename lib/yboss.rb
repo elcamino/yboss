@@ -5,7 +5,6 @@ module YBoss
 
 
   def self.method_missing(sym, *args, &block)
-    pp sym
     clazz_name = 'YBoss::' + sym.to_s.split(/_/).map { |w| w[0].upcase + w[1..w.length] }.join('::')
     lib_name   = 'yboss/' + sym.to_s.gsub(/_/, '/')
     require lib_name
