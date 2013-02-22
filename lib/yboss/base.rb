@@ -3,7 +3,7 @@ module YBoss
     require 'yboss/oauth'
     require 'yboss/config'
     require 'yboss/result/base'
-    require 'rest-client'
+    require 'net/http'
     require 'json'
     require 'uri'
 
