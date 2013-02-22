@@ -1,9 +1,159 @@
 = yboss
 
-Description goes here.
+yboss is a ruby library for the Yahoo BOSS API (http://developer.yahoo.com/boss/search/)
+
+== Usage
+
+=== Configuration
+
+  require 'yboss'
+
+  YBoss::Config.instance.oauth_key = 'your consumer_key here'
+  YBoss::Config.instance.oauth_secret = 'your consumer_secret here'
+
+  # in case you need to use a proxy
+  #
+  YBoss::Config.instance.proxy = 'http://your.proxy-address.com:3128/'
+
+=== Parameters
+
+You may use the same parameter names that are documented in the Boss
+API Guide at http://developer.yahoo.com/boss/search/boss_api_guide/.
+
+=== The web search service
+
+  res = YBoss.web('q' => 'tuscany')
+
+  res.responsecode
+  > 200
+  res.start
+  > 0
+  res.count
+  > 20
+  res.totalresults
+  > 576
+
+  res.items.each do |i|
+    puts "#{i.url}: #{i.title}, #{i.abstract}"
+    puts "   date: #{i.date}"
+    puts "   clickurl: #{i.clickurl}"
+    puts "   dispurl: #{i.dispurl}"
+  end
+
+=== The limitedweb search service
+
+  res = YBoss.limitedweb('q' => 'tuscany')
+
+The result has the same methods as the web result
+
+=== The image search service
+
+  res = YBoss.images('q' => 'ford mustang')
+
+  res.responsecode
+  > 200
+  res.start
+  > 0
+  res.count
+  > 35
+  res.totalresults
+  > 19400
+
+  res.items.each do |i|
+    puts "#{i.url}: #{i.title} (#{i.size}, #{i.format})"
+    puts "   size: #{i.width}x#{i.height}"
+    puts "   clickurl: #{i.clickurl}"
+    puts "   refererclickurl: #{i.refererclickurl}"
+    puts "   refererurl: #{i.refererurl}"
+    puts "   thumbnailheight: #{i.thumbnailheight}"
+    puts "   thumbnailurl: #{i.thumbnailurl}"
+  end
+
+=== The news search service
+
+  res = YBoss.news('q' => 'Mercedes Benz')
+
+  res.responsecode
+  > 200
+  res.start
+  > 0
+  res.count
+  > 50
+  res.totalresults
+  > 492
+
+  res.items.each do |i|
+    puts "#{i.url}: #{i.title}"
+    puts "   abstract: #{i.abstract}"
+    puts "   clickurl: #{i.clickurl}"
+    puts "   language: #{i.language}"
+    puts "   date: #{Time.at(i.date)}"
+    puts "   source: #{i.source}"
+    puts "   sourceurl: #{i.sourceurl}"
+  end
+
+=== The blog search service
+
+  res = YBoss.blogs('q' => 'Mercedes Benz')
+
+  res.responsecode
+  > 200
+  res.start
+  > 0
+  res.count
+  > 20
+  res.totalresults
+  > 17016
+
+  res.items.each do |i|
+    puts "#{i.dispurl}: #{i.title}"
+    puts "   abstract: #{i.abstract}"
+    puts "   clickurl: #{i.clickurl}"
+    puts "   keyterms: #{i.keyterms}"
+    puts "   date: #{i.date}"
+    puts "   author: #{i.author}"
+    puts "   icon: #{i.icon}"
+    puts "   score: #{i.score}"
+  end
+
+
+=== The spelling service
+
+  res = YBoss.spelling('q' => 'gruffaloe')
+
+  res.responsecode
+  > 200
+  res.start
+  > 0
+  res.count
+  > 1
+  res.totalresults
+  > 1
+
+  res.items.each do |i|
+     puts i.suggestion
+  end
+
+=== The related [also try] service
+
+  res = YBoss.related('q' => 'gruffalo')
+
+  res.responsecode
+  > 200
+  res.start
+  > 0
+  res.count
+  > 4
+  res.totalresults
+  > 4
+
+  res.items.each do |i|
+     puts i.suggestion
+  end
+
 
 == Contributing to yboss
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
@@ -14,6 +164,5 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2013 Tobias Begalke. See LICENSE.txt for
-further details.
+Copyright (c) 2013 Tobias Begalke. See LICENSE.txt for further details.
 
