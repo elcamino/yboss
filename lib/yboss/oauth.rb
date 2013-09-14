@@ -34,7 +34,7 @@ module YBoss
     def percent_encode( string )
 
       # ref http://snippets.dzone.com/posts/show/1260
-      return URI.escape( string, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]") ).gsub('*', '%2A')
+      return URI.escape( string, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]") ).gsub('*', '%2A').gsub('\'','%27')
     end
 
     # @ref http://oauth.net/core/1.0/#rfc.section.9.2
