@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+- 2.0.0
+- 1.9.3
+- 1.8.7
+before_script:
+env:
+  global:
+  - secure: bWVJ4p39I5tDAWodbhdfOJpoWcc99yKLNES1cjFKAytlWrOXDXe6RQfL8KgNnXYfDCcgeQkUCRZ66iR94/YOJPlXyhllViIg5vxhfmWp6+CyjohgBx1XJK3TenXTVtjm7/xItnGylsLx/f8MVsUfYh7SO3l7meUk4+Gtird1qLw=
+  - secure: fymHE1nTyzFEVdt39CA85fInLpcs0b9yjB+kdvBitVPf+gghX6uihzLpxPgIlgoER1MQDPr0X4jjc8WCbage1Af9ouiYE7lquJs1HaSh7mPP3uS8qYQJ0YFmzmzXlRQdq2JvMnN9RI0AjGg5ua7XLLYBA7whXm2iUzXBHKeYcbM=
+  - secure: lRVODkMHmLr3ySixwA5o8luqvfZM0Lq/Q0nIDWEGw2iheL4YUJtRkvVLV73iP/DWjL5+atFQN3TTowweuc3f8Ec+fdETA0wAR1rRwnIKK7Sm4iOG/eskMEW33tpliYUQv6lkbDeIHNYtolASG1AcXHskzSvDCQQuf+UuUHUSGpM=
