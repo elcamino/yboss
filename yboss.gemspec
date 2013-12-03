@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "yboss"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tobias Begalke"]
-  s.date = "2013-02-22"
+  s.date = "2013-12-03"
   s.description = "yboss is a ruby library for the Yahoo BOSS API"
   s.email = "tob@spyz.org"
   s.extra_rdoc_files = [
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     ".rspec",
+    ".travis.yml",
     "Gemfile",
     "LICENSE.txt",
     "README.rdoc",
@@ -38,12 +39,13 @@ Gem::Specification.new do |s|
     "lib/yboss/spelling.rb",
     "lib/yboss/web.rb",
     "spec/spec_helper.rb",
-    "spec/yboss_spec.rb"
+    "spec/yboss_spec.rb",
+    "yboss.gemspec"
   ]
   s.homepage = "http://github.com/elcamino/yboss"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.25"
   s.summary = "Yahoo BOSS library"
 
   if s.respond_to? :specification_version then
