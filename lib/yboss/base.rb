@@ -35,7 +35,7 @@ module YBoss
       @options.merge!(options)
 
       url = base_uri + '?'
-      url += @options.find_all { |k,v| ! v.nil? }.map { |k,v| "#{k}=#{URI.escape(v)}" }.join('&')
+      url += @options.find_all { |k,v| ! v.nil? }.map { |k,v| "#{k}=#{CGI.escape(v)}" }.join('&')
 
       parsed_url = URI.parse(url)
       url += "?" + @oauth.sign(parsed_url).query_string
