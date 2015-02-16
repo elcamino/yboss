@@ -82,4 +82,8 @@ describe "Yboss Basic Queries" do
   it "should return some results for a query string with an equals sign" do
     trySearch(:web, "1 + 1 = 3")
   end
+  
+  it "should return some results for a query string with an ampersand sing" do
+    trySearch(:web, "h&m")
+  end
 end
